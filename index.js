@@ -8,8 +8,8 @@ let reset = document.querySelector('#reset')
 let h1 = document.querySelector('h1')
 
 
-let step = 5
-let max = 15
+let step = 1
+let max = +Infinity
 let Arr = [5, 10, 15, 15, 100, 200]
 function btnUI(){
     steps.innerHTML=''
@@ -75,7 +75,7 @@ function reducer(state = 0, action) {
             return state<action.max?state+action.step:state;
 
         case "decrement":
-            return state>0?state - action.step:state;
+            return state>0?state - action.step<0?0:state - action.step:state;
 
         case "reset":
             return 0;
